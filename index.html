@@ -9,98 +9,40 @@
 <body>
     <div class="container">
         <h1>Ofertas e Promoções</h1>
-        <div class="products">
-            <!-- Repetir este bloco para 12 produtos -->
-            <div class="product">
-                <img src="https://m.media-amazon.com/images/I/51ezdcOv0qL._AC_UF1000,1000_QL80_.jpg" alt="Imagem do Produto">
-                <div class="product-info">
-                    <p>Valor: R$ 882,55</p>
-                    <p>Link do produto:</p>
-                    <input type="text" value="https://amzn.to/3zsy1TT" id="productLink1" readonly>
-                    <button onclick="copyLink('productLink1')">Copiar Link Amazon</button>
-                </div>
-            <div class="product">
-                <img src="https://www.lojaspresidente.com.br/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/s/m/smartphone-motorola-moto-g54-6-5-5g-azul-256gb-8gb-ram-camera-50mp-2mp-selfie-16mp-.jpg" alt="Imagem do Produto">
-                <div class="product-info">
-                    <p>Valor: R$ 1.219,99</p>
-                    <p>Link do produto:</p>
-                    <input type="text" value="https://amzn.to/3KYLAgs" id="productLink1" readonly>
-                    <button onclick="copyLink('productLink1')">Copiar Link Amazon</button>
-                </div>
-            </div>
-            <div class="product">
-                <img src="https://images.samsung.com/is/image/samsung/p6pim/br/sm-p619nzazzto/gallery/br-galaxy-tab-s6-lite-p615-sm-p619nzazzto-537510148?$650_519_PNG$" alt="Imagem do Produto">
-                <div class="product-info">
-                    <p>Valor: R$ 1.799,90</p>
-                    <p>Link do produto:</p>
-                    <input type="text" value="https://amzn.to/45Fdo3d" id="productLink2" readonly>
-                    <button onclick="copyLink('productLink2')">Copiar Link Amazon</button>
-                </div>
-            </div>
-            <div class="product">
-                <img src="https://a-static.mlcdn.com.br/450x450/jogo-com-5-toalha-de-banho-gigantes-gramatura-500-kit-de-toalhas-de-luxo-casa-da-toalha/casadatoalha/eleganz2b2r1pgrafite/68899a706c071e60163f4117bd642e37.jpg" alt="Imagem do Produto">
-                <div class="product-info">
-                    <p>Valor: R$ 69,99</p>
-                    <p>Link do produto:</p>
-                    <input type="text" value="https://amzn.to/4cdLTQE" id="productLink3" readonly>
-                    <button onclick="copyLink('productLink3')">Copiar Link Amazon</button>
-                </div>
-            </div>
-            <div class="product">
-                <img src="https://samsungbrshop.vtexassets.com/arquivos/ids/211459/01-SA365_SMG_WindfreeBlackEdition_1000x1000_20230505.jpg?v=638216796913700000" alt="Imagem do Produto">
-                <div class="product-info">
-                    <p>Valor: R$ 4.054,00</p>
-                    <p>Link do produto:</p>
-                    <input type="text" value="https://amzn.to/45FdZ4X" id="productLink4" readonly>
-                    <button onclick="copyLink('productLink4')">Copiar Link Amazon</button>
-                </div>
-            </div>
-            <div class="product">
-                <img src="https://m.media-amazon.com/images/I/41B1LVPbDTL._AC_.jpg" alt="Imagem do Produto">
-                <div class="product-info">
-                    <p>Valor: R$ 158,00</p>
-                    <p>Link do produto:</p>
-                    <input type="text" value="https://amzn.to/3XBN87H" id="productLink5" readonly>
-                    <button onclick="copyLink('productLink5')">Copiar Link Amazon</button>
-                </div>
-            </div>
-            <div class="product">
-                <img src="https://m.media-amazon.com/images/I/61eGRWbmuUL._AC_UF1000,1000_QL80_.jpg" alt="Imagem do Produto">
-                <div class="product-info">
-                    <p>Valor: R$ 199,00</p>
-                    <p>Link do produto:</p>
-                    <input type="text" value="https://amzn.to/3XBhbMU" id="productLink6" readonly>
-                    <button onclick="copyLink('productLink6')">Copiar Link Amazon</button>
-                </div>
-            </div>
-            <div class="product">
-                <img src="https://m.media-amazon.com/images/I/71zeBuMlz2L._AC_UF894,1000_QL80_.jpg" alt="Imagem do Produto">
-                <div class="product-info">
-                    <p>Valor: R$ 281,00</p>
-                    <p>Link do produto:</p>
-                    <input type="text" value="https://amzn.to/3VVlmSj" id="productLink7" readonly>
-                    <button onclick="copyLink('productLink7')">Copiar Link Amazon</button>
-                </div>
-            </div>
-            <div class="product">
-                <img src="https://m.media-amazon.com/images/I/618Wg-jzlqL._AC_UF894,1000_QL80_.jpg" alt="Imagem do Produto">
-                <div class="product-info">
-                    <p>Valor: R$ 701,00</p>
-                    <p>Link do produto:</p>
-                    <input type="text" value="https://amzn.to/3VUjPMd" id="productLink9" readonly>
-                    <button onclick="copyLink('productLink9')">Copiar Link Amazon</button>
-                </div>
-            </div>
+        <div class="products" id="productContainer">
+            <!-- Os produtos serão inseridos aqui pelo JavaScript -->
         </div>
     </div>
     <script>
-        function copyLink(elementId) {
-            var copyText = document.getElementById(elementId);
-            copyText.select();
-            copyText.setSelectionRange(0, 99999); // Para dispositivos móveis
-            document.execCommand("copy");
-            alert("Link copiado: " + copyText.value);
+        const products = [
+            { img: 'https://m.media-amazon.com/images/I/51ezdcOv0qL._AC_UF1000,1000_QL80_.jpg', price: 'R$ 882,55', link: 'https://amzn.to/3zsy1TT' },
+            { img: 'https://www.lojaspresidente.com.br/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/s/m/smartphone-motorola-moto-g54-6-5-5g-azul-256gb-8gb-ram-camera-50mp-2mp-selfie-16mp-.jpg', price: 'R$ 1.149,01', link: 'https://amzn.to/3KYLAgs' },
+            { img: 'https://images.samsung.com/is/image/samsung/p6pim/br/sm-p619nzazzto/gallery/br-galaxy-tab-s6-lite-p615-sm-p619nzazzto-537510148?$650_519_PNG$', price: 'R$ 1.799,90', link: 'https://amzn.to/45Fdo3d' },
+            { img: 'https://a-static.mlcdn.com.br/450x450/jogo-com-5-toalha-de-banho-gigantes-gramatura-500-kit-de-toalhas-de-luxo-casa-da-toalha/casadatoalha/eleganz2b2r1pgrafite/68899a706c071e60163f4117bd642e37.jpg', price: 'R$ 69,99', link: 'https://amzn.to/4cdLTQE' },
+            { img: 'https://samsungbrshop.vtexassets.com/arquivos/ids/211459/01-SA365_SMG_WindfreeBlackEdition_1000x1000_20230505.jpg?v=638216796913700000', price: 'R$ 4.054,00', link: 'https://amzn.to/45FdZ4X' },
+            { img: 'https://m.media-amazon.com/images/I/41B1LVPbDTL._AC_.jpg', price: 'R$ 158,00', link: 'https://amzn.to/3XBN87H' },
+            { img: 'https://m.media-amazon.com/images/I/61eGRWbmuUL._AC_UF1000,1000_QL80_.jpg', price: 'R$ 199,00', link: 'https://amzn.to/3XBhbMU' },
+            { img: 'https://m.media-amazon.com/images/I/71zeBuMlz2L._AC_UF894,1000_QL80_.jpg', price: 'R$ 281,00', link: 'https://amzn.to/3VVlmSj' },
+            { img: 'https://m.media-amazon.com/images/I/618Wg-jzlqL._AC_UF894,1000_QL80_.jpg', price: 'R$ 701,00', link: 'https://amzn.to/3VUjPMd' }
+        ];
+
+        function createProduct(product) {
+            return `
+                <div class="product">
+                    <img src="${product.img}" alt="Imagem do Produto">
+                    <div class="product-info">
+                        <p>Valor: ${product.price}</p>
+                        <input type="text" value="${product.link}" readonly>
+                        <button onclick="window.open('${product.link}', '_blank')">Abrir Link Amazon</button>
+                    </div>
+                </div>
+            `;
         }
+
+        const productContainer = document.getElementById('productContainer');
+        products.forEach(product => {
+            productContainer.innerHTML += createProduct(product);
+        });
     </script>
 </body>
 </html>
